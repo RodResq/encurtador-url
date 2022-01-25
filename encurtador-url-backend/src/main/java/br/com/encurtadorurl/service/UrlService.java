@@ -3,7 +3,9 @@ package br.com.encurtadorurl.service;
 import br.com.encurtadorurl.domain.Url;
 import br.com.encurtadorurl.repository.UrlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.Random;
@@ -37,5 +39,9 @@ public class UrlService {
         }
         String urlReduzidaStr = DOMINIO.concat(urlReduzida.toString());
         return urlReduzidaStr;
+    }
+
+    public Url buscarPorId(Long id) {
+        return urlRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
     }
 }
