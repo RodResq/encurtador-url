@@ -27,14 +27,15 @@ public class UrlService {
     }
 
     private String getUrlReduzida() {
-        String CHARS = "abcdefghijklmnopqrstuvwxyz1234567890";
+        String DOMINIO = "zg.com.br/";
+        String CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJLKMNOPQRSTUVWXYZ";
         StringBuilder urlReduzida = new StringBuilder();
         Random random = new Random();
         while (urlReduzida.length() < 5) {
-            int index = (int) random.nextFloat() * CHARS.length();
+            int index = (int) (random.nextFloat() * CHARS.length());
             urlReduzida.append(CHARS.charAt(index));
         }
-        String urlReduzidaStr = urlReduzida.toString();
+        String urlReduzidaStr = DOMINIO.concat(urlReduzida.toString());
         return urlReduzidaStr;
     }
 }

@@ -20,7 +20,7 @@ public class Url {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDate dataHoraCriacao;
 
-    @Column(name = "nava_url", nullable = false)
+    @Column(name = "nova_url", nullable = false)
     private String novaUrl;
 
     public Long getId() {
