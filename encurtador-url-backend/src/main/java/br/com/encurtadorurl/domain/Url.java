@@ -23,6 +23,16 @@ public class Url {
     @Column(name = "nova_url", nullable = false)
     private String novaUrl;
 
+    public Url() {
+    }
+
+    public Url(Url url) {
+        this.id = url.id;
+        this.urlOriginal = url.urlOriginal;
+        this.novaUrl = url.novaUrl;
+        this.dataHoraCriacao = url.dataHoraCriacao;
+    }
+
     public Long getId() {
         return id;
     }

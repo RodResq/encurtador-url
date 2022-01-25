@@ -1,7 +1,6 @@
 package br.com.encurtadorurl.rest;
 
 import br.com.encurtadorurl.domain.Url;
-import br.com.encurtadorurl.repository.UrlRepository;
 import br.com.encurtadorurl.service.UrlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/encurtador-rest/api")
@@ -39,5 +38,12 @@ public class EncurtadorRest {
         httpServletResponse.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
         httpServletResponse.setHeader("Location", HTTPS_PREFIX.concat(idUrl.getUrlOriginal()));
         httpServletResponse.setHeader("Connection", "close");
+    }
+
+
+    @GetMapping("/codigo/{urlOriginal}")
+    public ResponseEntity<List<Url>> encurtarMesmaUrl(@PathVariable String urlOriginal) {
+        List<Url> urlList = urlService.buscarUrlOriginal(urlOriginal);
+        return new ResponseEntity<>(urlList, HttpStatus.FOUND);
     }
 }
