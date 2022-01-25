@@ -13,6 +13,8 @@ import java.util.Random;
 @Service
 public class UrlService {
 
+    public static final String DOMINIO_PREFIX = "zg.com.br/";
+
     @Autowired
     private UrlRepository urlRepository;
 
@@ -29,7 +31,6 @@ public class UrlService {
     }
 
     private String getUrlReduzida() {
-        String DOMINIO = "zg.com.br/";
         String CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJLKMNOPQRSTUVWXYZ";
         StringBuilder urlReduzida = new StringBuilder();
         Random random = new Random();
@@ -37,7 +38,7 @@ public class UrlService {
             int index = (int) (random.nextFloat() * CHARS.length());
             urlReduzida.append(CHARS.charAt(index));
         }
-        String urlReduzidaStr = DOMINIO.concat(urlReduzida.toString());
+        String urlReduzidaStr = DOMINIO_PREFIX.concat(urlReduzida.toString());
         return urlReduzidaStr;
     }
 

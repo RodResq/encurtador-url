@@ -16,6 +16,8 @@ import java.io.IOException;
 @CrossOrigin(origins = "*")
 public class EncurtadorRest {
 
+    public static final String HTTPS_PREFIX = "https://";
+
     @Autowired
     private UrlService urlService;
 
@@ -32,10 +34,10 @@ public class EncurtadorRest {
     }
 
     @GetMapping(path = "/{id}")
-    public void redirectById(@PathVariable Long id, HttpServletResponse httpServletResponse) throws IOException {
+    public void redirectById(@PathVariable Long id, HttpServletResponse httpServletResponse) {
         Url idUrl = urlService.buscarPorId(id);
         httpServletResponse.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-        httpServletResponse.setHeader("Location", "https://".concat(idUrl.getUrlOriginal()));
+        httpServletResponse.setHeader("Location", HTTPS_PREFIX.concat(idUrl.getUrlOriginal()));
         httpServletResponse.setHeader("Connection", "close");
     }
 }
