@@ -7,6 +7,6 @@
     <button type="submit" class="btn btn-primary" (click)="onClick(urlOriginal.value)">Encurtar Url</button>
   </form>
   <div class="mb-3">
-    <a (click)="redirecionar(urlRetorno?.id)">{{ urlRetorno?.novaUrl }}</a>
+    <a (click)="redirecionar(urlRetorno?.urlOriginal)">{{ urlRetorno?.novaUrl }}</a>
   </div>
 </div>

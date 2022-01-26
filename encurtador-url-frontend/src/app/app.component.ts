@@ -37,7 +37,7 @@ export class AppComponent implements OnDestroy {
     })
   }
 
-  redirecionar(idUrl: number) {
-    this.service.redirecionarUrlOriginal(idUrl).subscribe();
+  redirecionar(url: String) {
+    this.service.redirecionarUrlOriginal(url);
   }
 }
