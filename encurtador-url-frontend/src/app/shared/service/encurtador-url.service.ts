@@ -3,6 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 
+const API_PATH: String  = '/encurtador-rest/api';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +25,6 @@ export class EncurtadorUrlService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/text' })
     }
-    return this.http.get(`${this.apiEncurtadorUrl}/encurtador-rest/api`, httpOptions);
+    return this.http.get(`${this.apiEncurtadorUrl}API_PATH`, httpOptions);
   }
 }
