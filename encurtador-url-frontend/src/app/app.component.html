@@ -1,11 +1,32 @@
+
+<!-- As a link -->
+<nav class="navbar navbar-light"  [ngStyle]="{'background-color': '#98c14c', 'background': 'linear-gradient(\n'+
+'90deg,rgba(152,193,76,1) 0%,rgba(103,184,91,1) 100%)'}">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Encurtador Url</a>
+  </div>
+</nav>
+<div class="row">
+  <div class="col-sm-12">
+    <h1></h1>
+  </div>
+</div>
 <div class="container">
-  <form>
-    <div class="mb-3">
-      <label for="url" class="form-label">Entre com a url</label>
-      <input type="text" class="form-control" id="url" aria-describedby="emailHelp" #urlOriginal>
+  <div class="row">
+    <div class="col-sm-12">
+      <form>
+        <div class="container col-sm-6">
+          <div class="row mb-3">
+            <label for="url" class="form-label">Entre com a url</label>
+            <input type="text" class="form-control" id="url" #urlOriginal>
+          </div>
+          <div class="container col-sm-3">
+            <button type="submit" class="btn btn-primary" (click)="onClick(urlOriginal.value)">Encurtar</button>
+          </div>
+        </div>
+      </form>
     </div>
-    <button type="submit" class="btn btn-primary" (click)="onClick(urlOriginal.value)">Encurtar Url</button>
-  </form>
+  </div>
   <div class="mb-3">
     <a (click)="redirecionar(urlRetorno?.urlOriginal)">{{ urlRetorno?.novaUrl }}</a>
   </div>
