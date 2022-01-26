@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {EncurtadorUrlService} from './shared/service/encurtador-url.service';
+import {EncurtadorUrlService} from './service/encurtador-url.service';
 
 @Component({
   selector: 'app-root',
