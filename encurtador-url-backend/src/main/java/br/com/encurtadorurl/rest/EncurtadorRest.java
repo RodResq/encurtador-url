@@ -35,15 +35,15 @@ public class EncurtadorRest {
     @GetMapping(path = "/{id}")
     public void redirectById(@PathVariable Long id, HttpServletResponse httpServletResponse) {
         Url idUrl = urlService.buscarPorId(id);
-        httpServletResponse.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-        httpServletResponse.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        httpServletResponse.setStatus(HttpServletResponse.SC_FOUND);
+        httpServletResponse.setHeader("Access-Control-Allow-Origin", "");
         httpServletResponse.setHeader("Access-Control-Allow-Credentials", "true");
         httpServletResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE, PATCH");
         httpServletResponse.setHeader("Access-Control-Max-Age", "3600");
         httpServletResponse.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,Authorization");
         httpServletResponse.setHeader("Access-Control-Expose-Headers", "Location");
         httpServletResponse.setHeader("Location", HTTPS_PREFIX.concat(idUrl.getUrlOriginal()));
-        httpServletResponse.setHeader("Connection", "open");
+        httpServletResponse.setHeader("Connection", "Close");
     }
 
 
