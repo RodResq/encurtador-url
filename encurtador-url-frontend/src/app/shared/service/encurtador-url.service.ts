@@ -8,7 +8,7 @@ import {environment} from '../../../environments/environment';
 })
 export class EncurtadorUrlService {
 
-  private readonly apiEncurtadorUrl = `${environment.URL_BACKEND}/test`;
+  private readonly apiEncurtadorUrl = `${environment.URL_BACKEND}`;
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +16,13 @@ export class EncurtadorUrlService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/text' })
     }
-    return this.http.get(`${this.apiEncurtadorUrl}`, httpOptions);
+    return this.http.get(`${this.apiEncurtadorUrl}/test`, httpOptions);
+  }
+
+  encurtarUrl(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/text' })
+    }
+    return this.http.get(`${this.apiEncurtadorUrl}/encurtador-rest/api`, httpOptions);
   }
 }
