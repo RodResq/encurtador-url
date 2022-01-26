@@ -3,7 +3,9 @@
 <nav class="navbar navbar-light"  [ngStyle]="{'background-color': '#98c14c', 'background': 'linear-gradient(\n'+
 '90deg,rgba(152,193,76,1) 0%,rgba(103,184,91,1) 100%)'}">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Encurtador Url</a>
+    <span class="navbar-text">
+      <p class="fs-4">Encurtador Url</p>
+    </span>
   </div>
 </nav>
 <div class="row">
@@ -24,7 +26,7 @@
             </div>
           </div>
           <div class="container col-sm-3">
-            <button type="submit" class="btn btn-primary"
+            <button type="submit" class="btn btn-primary btn-lg"
                     (click)="onClick(urlOriginal.value)"
                     [ngStyle]="{'background-color': '#98c14c',
                     'background': 'linear-gradient(90deg,rgba(152,193,76,1) 0%,rgba(103,184,91,1) 100%)',
@@ -35,8 +37,10 @@
       </form>
     </div>
       <div class="container col-sm-6">
-        <div class="container col-sm-3">
-          <a (click)="redirecionar(urlRetorno?.urlOriginal)">{{ urlRetorno?.novaUrl }}</a>
+        <div class="row mb-5">
+        </div>
+        <div class="container col-sm-4">
+          <a class="link-success text-decoration-none fs-4" (click)="redirecionar(urlRetorno?.urlOriginal)">{{ urlRetorno?.novaUrl }}</a>
         </div>
       </div>
   </div>
