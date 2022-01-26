@@ -17,10 +17,10 @@ export class AppComponent {
     private service: EncurtadorUrlService) {
   }
 
-  onClick(value: String) {
-    console.log(value)
-    this.urlReduzida = value;
-    this.service.encurtadorTest().subscribe(r => {
+  onClick(url: String) {
+    console.log(url)
+    this.urlReduzida = url;
+    this.service.encurtarUrl(url).subscribe(r => {
       console.log(r)
     })
   }

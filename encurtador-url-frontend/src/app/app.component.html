@@ -1,3 +1,10 @@
-<input type="text" #resource>
-<button type="button" (click)="onClick(resource.value)">Encurtar Url</button>
-<a>{{ urlReduzida }}</a>
+<div class="container">
+  <form>
+    <div class="mb-3">
+      <label for="url" class="form-label">Entre com a url</label>
+      <input type="text" class="form-control" id="url" aria-describedby="emailHelp" #urlOriginal>
+      <a>{{ urlReduzida }}</a>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="onClick(urlOriginal.value)">Encurtar Url</button>
+  </form>
+</div>

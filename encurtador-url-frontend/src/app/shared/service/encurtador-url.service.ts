@@ -21,10 +21,7 @@ export class EncurtadorUrlService {
     return this.http.get(`${this.apiEncurtadorUrl}/test`, httpOptions);
   }
 
-  encurtarUrl(): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/text' })
-    }
-    return this.http.get(`${this.apiEncurtadorUrl}API_PATH`, httpOptions);
+  encurtarUrl(urlOriginal: String): Observable<any> {
+    return this.http.post(`${this.apiEncurtadorUrl}${API_PATH}`, { urlOriginal });
   }
 }
