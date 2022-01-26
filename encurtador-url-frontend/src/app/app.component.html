@@ -19,15 +19,27 @@
           <div class="row mb-3">
             <label for="url" class="form-label">Entre com a url</label>
             <input type="text" class="form-control" id="url" #urlOriginal>
+            <div class="invalid-feedback">
+              Por Favor Entre com a URl.
+            </div>
           </div>
           <div class="container col-sm-3">
-            <button type="submit" class="btn btn-primary" (click)="onClick(urlOriginal.value)">Encurtar</button>
+            <button type="submit" class="btn btn-primary"
+                    (click)="onClick(urlOriginal.value)"
+                    [ngStyle]="{'background-color': '#98c14c',
+                    'background': 'linear-gradient(90deg,rgba(152,193,76,1) 0%,rgba(103,184,91,1) 100%)',
+                    'border': 'none'}"
+            >Encurtar</button>
           </div>
         </div>
       </form>
     </div>
   </div>
-  <div class="mb-3">
-    <a (click)="redirecionar(urlRetorno?.urlOriginal)">{{ urlRetorno?.novaUrl }}</a>
+  <div class="col-sm-12">
+    <div class="container col-sm-6">
+      <div class="row mb-3">
+        <a (click)="redirecionar(urlRetorno?.urlOriginal)">{{ urlRetorno?.novaUrl }}</a>
+      </div>
+    </div>
   </div>
 </div>
