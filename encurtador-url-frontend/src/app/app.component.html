@@ -3,8 +3,10 @@
     <div class="mb-3">
       <label for="url" class="form-label">Entre com a url</label>
       <input type="text" class="form-control" id="url" aria-describedby="emailHelp" #urlOriginal>
-      <a>{{ urlReduzida }}</a>
     </div>
     <button type="submit" class="btn btn-primary" (click)="onClick(urlOriginal.value)">Encurtar Url</button>
   </form>
+  <div class="mb-3">
+    <a (click)="redirecionar(urlRetorno?.id)">{{ urlRetorno?.novaUrl }}</a>
+  </div>
 </div>

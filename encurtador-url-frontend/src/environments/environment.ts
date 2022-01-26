@@ -4,9 +4,8 @@
 
 export const environment = {
   production: false,
-  URL_BACKEND: 'http://localhost:8080/encurtador',
-  AMBIENTE: 'DESENV'
-
+  contextPath: '/server-api/encurtador',
+  url_base: '/server-api/encurtador'
 };
 
 /*
