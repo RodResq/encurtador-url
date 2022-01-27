@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  contextPath: '/server-api/encurtador',
-  url_base: '/server-api/encurtador'
+  contextPath: '/encurtador',
+  url_base: '/encurtador'
 };
 
 /*

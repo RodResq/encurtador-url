@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
-  URL_BACKEND: 'http://localhost:8080/encurtador',
-  AMBIENTE: 'PROD'
+  contextPath: '/server-api/encurtador',
+  url_base: 'http://localhost:8080',
+  ambient: 'prod'
 };
