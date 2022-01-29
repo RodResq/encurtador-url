@@ -10,7 +10,7 @@
 
     <artifactId>encurtador-url-backend</artifactId>
     <version>${project.parent.version}</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <properties>
         <main.basedir>${project.parent.basedir}</main.basedir>
