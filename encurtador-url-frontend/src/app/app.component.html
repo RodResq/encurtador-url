@@ -22,7 +22,7 @@
             <label for="url" class="form-label">Entre com a url</label>
             <input type="text" class="form-control" id="url" #urlOriginal
                    formControlName="urlOriginalControl">
-            <div [ngClass]="campoInvalido ? 'campo-invalido': ''" *ngIf="campoInvalido">
+            <div [ngClass]="campoInvalido ? 'campo-invalido': ''" [hidden]="!campoInvalido">
               *Por favor entre com a url.
             </div>
           </div>

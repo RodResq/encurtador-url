@@ -36,17 +36,19 @@ export class AppComponent implements OnInit, OnDestroy {
 
   onClick(url: String) {
     console.log(this.urlForm);
-    this.validadaCampoUrl(this.urlForm);
-    this.urlReduzida = url;
-    this.service.encurtarUrl(url)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((retorno: Url) => {
-      this.urlRetorno = retorno;
-      console.log(this.urlRetorno);
-    })
+    this.validaCampoUrl(this.urlForm);
+    if (url) {
+      this.urlReduzida = url;
+      this.service.encurtarUrl(url)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((retorno: Url) => {
+          this.urlRetorno = retorno;
+          console.log(this.urlRetorno);
+        })
+    }
   }
 
-  private validadaCampoUrl(urlForm: FormGroup) {
+  private validaCampoUrl(urlForm: FormGroup) {
     console.log(urlForm.get('urlOriginalControl'));
     const campoUrl = urlForm.get('urlOriginalControl');
     if (campoUrl?.errors?.required && (campoUrl?.pristine || campoUrl.dirty)) {
