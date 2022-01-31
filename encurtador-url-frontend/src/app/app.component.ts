@@ -14,7 +14,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class AppComponent implements OnInit, OnDestroy {
 
   title = 'encurtador-url-frontend';
-  urlReduzida: String = '';
+  urlReduzida: string = '';
   urlRetorno = new Url();
   destroy$: Subject<boolean> = new Subject<boolean>();
   urlForm: FormGroup;
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
     })
   }
 
-  onClick(url: String) {
+  onClick(url: string) {
     console.log(this.urlForm);
     this.validaCampoUrl(this.urlForm);
     if (url) {
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  redirecionar(url: String) {
+  redirecionar(url: string) {
     this.service.redirecionarUrlOriginal(url);
   }
 

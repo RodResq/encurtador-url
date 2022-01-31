@@ -6,10 +6,10 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'encurtador-url'
+    redirectTo: 'encurtador'
   },
   {
-    path: 'encurtador-url',
+    path: 'encurtador',
     component: AppComponent
   }
 ];
