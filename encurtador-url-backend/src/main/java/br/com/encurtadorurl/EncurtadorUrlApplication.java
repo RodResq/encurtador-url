@@ -8,11 +8,13 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class EncurtadorUrlApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EncurtadorUrlApplication.class, args);
+
+//		SpringApplication.run(EncurtadorUrlApplication.class, args);
+//		Seta profile
+		new SpringApplicationBuilder(EncurtadorUrlApplication.class)
+				.profiles("local")
+				.run(args);
 	}
 
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(EncurtadorUrlApplication.class);
-	}
 
 }

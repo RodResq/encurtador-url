@@ -12,16 +12,7 @@ const HTTPS_PREFIX = 'https://';
 })
 export class EncurtadorUrlService {
 
-  private readonly apiEncurtadorUrl = `${environment.url_base}`;
-
   constructor(private http: HttpClient) { }
-
-  encurtadorTest(): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/text' })
-    }
-    return this.http.get(`${this.apiEncurtadorUrl}/test`, httpOptions);
-  }
 
   encurtarUrl(urlOriginal: string): Observable<Url> {
     return this.http.post<Url>(`${environment.url_base}${environment.contextPath}${API_PATH}`, { urlOriginal });
@@ -29,8 +20,9 @@ export class EncurtadorUrlService {
 
   redirecionarUrlOriginal(url: string) {
     const urlRedirecionar = HTTPS_PREFIX + url;
-    console.log(urlRedirecionar);
-
+    if (url) {
+      window.open(urlRedirecionar, "_blank");
+    }
     // const url = `${environment.url_base}${environment.contextPath}${API_PATH}/${idUrl}`;
     // const httpOptions = {
     //   headers: new HttpHeaders({
@@ -40,9 +32,6 @@ export class EncurtadorUrlService {
     //     'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
     //   })
     // }
-    if (url) {
-      window.open(urlRedirecionar, "_blank");
-    }
     // window.location.href= HTTPS_PREFIX + url;
     // return this.http.get(url, httpOptions);
   }
