@@ -10,7 +10,7 @@ public class EncurtadorUrlApplication {
 	public static void main(String[] args) {
 
 //		SpringApplication.run(EncurtadorUrlApplication.class, args);
-//		Seta profile(loca, dev, prod)
+//		Seta profile(local, dev, prod)
 		new SpringApplicationBuilder(EncurtadorUrlApplication.class)
 				.profiles("local")
 				.run(args);
