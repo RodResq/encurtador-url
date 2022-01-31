@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {Url} from '../domain/url';
 
-const API_PATH: String  = '/encurtador-rest/api';
+const API_PATH: String  = 'encurtador-rest/api';
 const HTTPS_PREFIX = 'https://';
 
 @Injectable({
