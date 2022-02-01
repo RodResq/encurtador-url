@@ -38,7 +38,6 @@ export class EncurtadorUrlService {
 
   buscarUrl(value): Observable<Url> {
     return this.http
-      .get<Url>(`${environment.url_base}${environment.contextPath}${API_PATH}/codigo/
-      ${value}`);
+      .get<Url>(`${environment.url_base}${environment.contextPath}${API_PATH}/codigo/${value}`);
   }
 }

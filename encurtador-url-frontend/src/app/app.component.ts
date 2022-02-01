@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {EncurtadorUrlService} from './service/encurtador-url.service';
 import {Url} from './domain/url';
-import {takeUntil, tap} from 'rxjs/operators';
+import {filter, takeUntil, tap} from 'rxjs/operators';
 import {Observable, Subject} from 'rxjs';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { debounce } from 'lodash';
@@ -67,9 +67,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   search(value) {
     const searchUrl  = value;
+    console.log(searchUrl)
     this.result$ = this.service.buscarUrl(searchUrl);
     this.result$
-      .pipe(tap(r => console.log(r)))
       .subscribe();
   }
 
