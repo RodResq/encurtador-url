@@ -19,8 +19,8 @@ export class AppComponent implements OnInit, OnDestroy {
   urlRetorno = new Url();
   destroy$: Subject<boolean> = new Subject<boolean>();
   urlForm: FormGroup;
-  campoInvalido: Boolean = false;
   private result$: Observable<Url>;
+  campoInputInvalido: boolean;
 
   constructor(
     private router: Router,
@@ -38,8 +38,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onClick(url: string) {
-    console.log(this.urlForm);
-    this.validaCampoUrl(this.urlForm);
+    this.isInvalid();
     if (url) {
       this.urlReduzida = url;
       this.service.encurtarUrl(url)
@@ -51,13 +50,14 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  private validaCampoUrl(urlForm: FormGroup) {
-    console.log(urlForm.get('urlOriginalControl'));
-    const campoUrl = urlForm.get('urlOriginalControl');
+  public isInvalid(): boolean {
+    const campoUrl = this.urlForm.get('urlOriginalControl');
     if (campoUrl?.errors?.required && (campoUrl?.pristine || campoUrl.dirty)) {
-      this.campoInvalido = true;
+      this.campoInputInvalido = true;
+      return true;
     } else {
-      this.campoInvalido = false;
+      this.campoInputInvalido = false;
+      return  false;
     }
   }
 
@@ -67,7 +67,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   search(value) {
     const searchUrl  = value;
-    console.log(searchUrl)
     this.result$ = this.service.buscarUrl(searchUrl);
     this.result$
       .pipe(tap(r => console.log(r)))
