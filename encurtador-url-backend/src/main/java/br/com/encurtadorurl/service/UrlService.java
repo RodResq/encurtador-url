@@ -22,10 +22,10 @@ public class UrlService {
 
     public Url salvarUrl(Url url) {
         try {
-            List<Url> retorno = buscarUrlOriginal(url.getUrlOriginal());
-            if (retorno.size() > 0) {
-                retorno.get(0).setNovaUrl(getUrlReduzida());
-                return urlRepository.save(retorno.get(0));
+            Url retorno = buscarUrlOriginal(url.getUrlOriginal());
+            if (Objects.nonNull(retorno)) {
+                retorno.setNovaUrl(getUrlReduzida());
+                return urlRepository.save(retorno);
             } else {
                 url.setDataHoraCriacao(LocalDate.now());
                 if(url.getUrlOriginal() != null) {
