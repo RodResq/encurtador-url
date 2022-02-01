@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -22,10 +21,10 @@ public class UrlService {
 
     public Url salvarUrl(Url url) {
         try {
-            List<Url> retorno = buscarUrlOriginal(url.getUrlOriginal());
-            if (retorno.size() > 0) {
-                retorno.get(0).setNovaUrl(getUrlReduzida());
-                return urlRepository.save(retorno.get(0));
+            Url retorno = buscarUrlOriginal(url.getUrlOriginal());
+            if (Objects.nonNull(retorno)) {
+                retorno.setNovaUrl(getUrlReduzida());
+                return urlRepository.save(retorno);
             } else {
                 url.setDataHoraCriacao(LocalDate.now());
                 if(url.getUrlOriginal() != null) {
@@ -38,7 +37,7 @@ public class UrlService {
         return urlRepository.save(url);
     }
 
-    public List<Url> buscarUrlOriginal(String url) {
+    public Url buscarUrlOriginal(String url) {
         return urlRepository.findByOriginal(url);
     }
 

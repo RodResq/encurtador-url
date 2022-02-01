@@ -35,4 +35,8 @@ export class EncurtadorUrlService {
     // window.location.href= HTTPS_PREFIX + url;
     // return this.http.get(url, httpOptions);
   }
+
+  buscarUrl(value: string): Observable<Url> {
+    return this.http.get<Url>(`${environment.url_base}${environment.contextPath}${API_PATH}/codigo/${value}`);
+  }
 }

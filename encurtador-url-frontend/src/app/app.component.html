@@ -20,14 +20,19 @@
         <div class="container col-sm-6">
           <div class="row mb-3">
             <label for="url" class="form-label">Entre com a url</label>
-            <input type="text" class="form-control" id="url" #urlOriginal
-                   formControlName="urlOriginalControl">
-            <div [ngClass]="campoInvalido ? 'campo-invalido': ''" [hidden]="!campoInvalido">
+            <input type="text"
+                   id="url" #urlOriginal
+                   [ngClass]="isInvalid() ? 'form-control is-invalid': 'form-control is-valid'"
+                   formControlName="urlOriginalControl"
+                   (keyup)="buscarUrl(urlOriginal.value)"
+                   required>
+            <div *ngIf="campoInputInvalido" class="campo-invalido">
               *Por favor entre com a url.
             </div>
           </div>
           <div class="container col-sm-3">
             <button type="submit" class="btn btn-primary btn-lg"
+                    [disabled]="campoInputInvalido"
                     (click)="onClick(urlOriginal.value)"
                     [ngStyle]="{'background-color': '#98c14c',
                     'background': 'linear-gradient(90deg,rgba(152,193,76,1) 0%,rgba(103,184,91,1) 100%)',
@@ -40,7 +45,10 @@
       <div class="container col-sm-6">
         <div class="row mb-5"></div>
         <div class="container col-sm-4">
-          <a class="link-success text-decoration-none fs-4" (click)="redirecionar(urlRetorno?.urlOriginal)">{{ urlRetorno?.novaUrl }}</a>
+          <a class="link-success text-decoration-none fs-4"
+             [ngModel]="urlRetorno"
+             #urlLink
+             (click)="redirecionar(urlRetorno?.urlOriginal)">{{ urlRetorno.novaUrl }}</a>
         </div>
       </div>
   </div>

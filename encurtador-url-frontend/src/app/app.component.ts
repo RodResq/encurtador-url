@@ -1,10 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {EncurtadorUrlService} from './service/encurtador-url.service';
 import {Url} from './domain/url';
-import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {debounce, debounceTime, takeUntil} from 'rxjs/operators';
+import {interval, Subject} from 'rxjs';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {logger} from 'codelyzer/util/logger';
 
 @Component({
   selector: 'app-root',
@@ -13,17 +14,25 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
+  @ViewChild('urlLink')
+  urlLink: ElementRef<HTMLElement>;
+
+  @ViewChild('urlOriginal')
+  urlOriginal = new ElementRef<HTMLInputElement>(null);
+
   title = 'encurtador-url-frontend';
   urlReduzida: string = '';
   urlRetorno = new Url();
   destroy$: Subject<boolean> = new Subject<boolean>();
   urlForm: FormGroup;
-  campoInvalido: Boolean = false;
+  campoInputInvalido: boolean;
 
   constructor(
     private router: Router,
     private service: EncurtadorUrlService,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder,
+    private render: Renderer2,
+    private elemenRef: ElementRef) {
   }
 
 
@@ -31,30 +40,34 @@ export class AppComponent implements OnInit, OnDestroy {
     const fb = this.formBuilder;
     this.urlForm = fb.group({
       urlOriginalControl: [null, Validators.required]
-    })
+    });
   }
 
+  get getUrl(){
+    return this.urlForm.controls;
+  }
+
+
   onClick(url: string) {
-    console.log(this.urlForm);
-    this.validaCampoUrl(this.urlForm);
+    this.isInvalid();
     if (url) {
       this.urlReduzida = url;
       this.service.encurtarUrl(url)
         .pipe(takeUntil(this.destroy$))
         .subscribe((retorno: Url) => {
           this.urlRetorno = retorno;
-          console.log(this.urlRetorno);
         })
     }
   }
 
-  private validaCampoUrl(urlForm: FormGroup) {
-    console.log(urlForm.get('urlOriginalControl'));
-    const campoUrl = urlForm.get('urlOriginalControl');
+  public isInvalid(): boolean {
+    const campoUrl = this.urlForm.get('urlOriginalControl');
     if (campoUrl?.errors?.required && (campoUrl?.pristine || campoUrl.dirty)) {
-      this.campoInvalido = true;
+      this.campoInputInvalido = true;
+      return true;
     } else {
-      this.campoInvalido = false;
+      this.campoInputInvalido = false;
+      return  false;
     }
   }
 
@@ -68,4 +81,13 @@ export class AppComponent implements OnInit, OnDestroy {
     this.destroy$.unsubscribe();
   }
 
+  buscarUrl(value: string) {
+    this.service.buscarUrl(value)
+      .pipe(debounceTime(500))
+      .subscribe((retorno: Url) => {
+        if(retorno) {
+          this.urlRetorno = retorno;
+        }
+      });
+  }
 }

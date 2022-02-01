@@ -1,3 +1,9 @@
 .campo-invalido {
   color: red;
+  border-color: red;
+}
+
+
+.campo-valido {
+  visibility: hidden;
 }
