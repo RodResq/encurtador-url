@@ -70,7 +70,12 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log(searchUrl)
     this.result$ = this.service.buscarUrl(searchUrl);
     this.result$
-      .subscribe();
+      .pipe(tap(r => console.log(r)))
+      .subscribe(retorno => {
+        if (retorno) {
+          this.urlRetorno = retorno;
+        }
+      });
   }
 
 
