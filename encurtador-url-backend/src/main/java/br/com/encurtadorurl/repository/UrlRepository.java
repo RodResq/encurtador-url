@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface UrlRepository extends JpaRepository<Url, Long> {
     @Query(value = "SELECT * FROM url u WHERE u.URL_ORIGINAL LIKE :url", nativeQuery = true)
-    List<Url> findByOriginal(@Param("url") String urlOriginal);
+    Url findByOriginal(@Param("url") String urlOriginal);
 }

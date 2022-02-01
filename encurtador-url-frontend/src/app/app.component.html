@@ -41,7 +41,10 @@
       <div class="container col-sm-6">
         <div class="row mb-5"></div>
         <div class="container col-sm-4">
-          <a class="link-success text-decoration-none fs-4" (click)="redirecionar(urlRetorno?.urlOriginal)">{{ urlRetorno?.novaUrl }}</a>
+          <a class="link-success text-decoration-none fs-4"
+             ngDefaultControl
+             [ngModel]="urlRetorno"
+             (click)="redirecionar(urlRetorno?.urlOriginal)">{{ urlRetorno?.novaUrl }}</a>
         </div>
       </div>
   </div>

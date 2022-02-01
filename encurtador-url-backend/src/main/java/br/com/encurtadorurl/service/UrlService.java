@@ -38,7 +38,7 @@ public class UrlService {
         return urlRepository.save(url);
     }
 
-    public List<Url> buscarUrlOriginal(String url) {
+    public Url buscarUrlOriginal(String url) {
         return urlRepository.findByOriginal(url);
     }
 

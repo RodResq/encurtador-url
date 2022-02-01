@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/encurtador-rest/api")
@@ -48,8 +49,11 @@ public class EncurtadorRest {
 
 
     @GetMapping("/codigo/{urlOriginal}")
-    public ResponseEntity<List<Url>> encurtarMesmaUrl(@PathVariable String urlOriginal) {
-        List<Url> urlList = urlService.buscarUrlOriginal(urlOriginal);
-        return new ResponseEntity<>(urlList, HttpStatus.FOUND);
+    public ResponseEntity<Url> encurtarMesmaUrl(@PathVariable String urlOriginal) {
+        Url url = urlService.buscarUrlOriginal(urlOriginal);
+        if(Objects.isNull(url)) {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(url, HttpStatus.OK);
     }
 }
