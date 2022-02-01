@@ -21,6 +21,7 @@
           <div class="row mb-3">
             <label for="url" class="form-label">Entre com a url</label>
             <input type="text" class="form-control" id="url" #urlOriginal
+                   (keyup)="search(urlOriginal.value)"
                    formControlName="urlOriginalControl">
             <div [ngClass]="campoInvalido ? 'campo-invalido': ''" [hidden]="!campoInvalido">
               *Por favor entre com a url.

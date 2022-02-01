@@ -2,9 +2,10 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {EncurtadorUrlService} from './service/encurtador-url.service';
 import {Url} from './domain/url';
-import {takeUntil} from 'rxjs/operators';
-import {Subject} from 'rxjs';
+import {takeUntil, tap} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { debounce } from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -19,11 +20,13 @@ export class AppComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject<boolean>();
   urlForm: FormGroup;
   campoInvalido: Boolean = false;
+  private result$: Observable<Url>;
 
   constructor(
     private router: Router,
     private service: EncurtadorUrlService,
     private formBuilder: FormBuilder) {
+    this.search = debounce(this.search, 1000);
   }
 
 
@@ -60,6 +63,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   redirecionar(url: string) {
     this.service.redirecionarUrlOriginal(url);
+  }
+
+  search(value) {
+    const searchUrl  = value;
+    this.result$ = this.service.buscarUrl(searchUrl);
+    this.result$
+      .pipe(tap(r => console.log(r)))
+      .subscribe();
   }
 
 
