@@ -6,6 +6,7 @@ import {debounce, debounceTime, takeUntil} from 'rxjs/operators';
 import {interval, Subject} from 'rxjs';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {logger} from 'codelyzer/util/logger';
+import * as url from 'url';
 
 @Component({
   selector: 'app-root',
