@@ -52,7 +52,7 @@ public class EncurtadorRest {
     public ResponseEntity<Url> encurtarMesmaUrl(@PathVariable String urlOriginal) {
         Url url = urlService.buscarUrlOriginal(urlOriginal);
         if(Objects.isNull(url)) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(url, HttpStatus.OK);
     }
