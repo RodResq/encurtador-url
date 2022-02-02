@@ -73,6 +73,16 @@ Nessecário passar o json no corpo da requisição ex:
 	"urlOriginal": "www.google.com" 
 }
 ```
+Como retorno temos um json com a nova url reduzida criada
+```json
+{
+	"id": 1,
+	"urlOriginal": "www.google.com",
+	"dataHoraCriacao": "2022-02-01",
+	"novaUrl": "zg.com.br/uCNIj"
+}
+```
+
 
 Redirecionando para a url original, retorna o site da respectiva url:
 ```shell
