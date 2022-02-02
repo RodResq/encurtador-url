@@ -7,7 +7,7 @@ O projeto tem por objetivo testar a funcionalidade e lógicas de redução de ur
 * Angula 10
 * H2 DataBase, Mysql
 
-## Instalação da aplicação
+## Download do Projeto
 
 Faça o clone do repositório:
 ```shell
