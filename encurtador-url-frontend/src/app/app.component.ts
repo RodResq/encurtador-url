@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {EncurtadorUrlService} from './service/encurtador-url.service';
 import {Url} from './domain/url';
@@ -54,6 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const campoUrl = this.urlForm.get('urlOriginalControl');
     if (campoUrl?.errors?.required && (campoUrl?.pristine || campoUrl.dirty)) {
       this.campoInputInvalido = true;
+      this.urlRetorno.novaUrl = '';
       return true;
     } else {
       this.campoInputInvalido = false;
