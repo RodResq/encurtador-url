@@ -1,4 +1,4 @@
-# Visão geralal
+# Visão geral
 O projeto tem por objetivo testar as funcionalidades e lógicas para a redução de urls.
 
 ## Tecnologias
