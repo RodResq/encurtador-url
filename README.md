@@ -21,14 +21,14 @@ Entre na pasta do projeto:
 cd encurtador-url
 ```
 
-Step 2: Execute o seguinte comando para instalar as dependencias e fazer o build:
+Step 2: Execute o seguinte comando para baixar as dependências e fazer o build do projeto:
 ```shell
 mvn clean intall
 ```
 
 Step 3: Execute o arquivo jar do projeto com o seguinte comando:
 ```shell
-java -jar .\backend\target\projeto.jar
+java -jar .\encurtador-url-backend\target\projeto.jar
 ```
 
 ### Acessando o projeto
