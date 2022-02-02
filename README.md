@@ -2,7 +2,7 @@
 O projeto tem por objetivo testar a funcionalidade e lógicas de redução de urls.
 
 ## Tecnologias
-* Java 8
+* Java 11
 * Spring Boot
 * Angula 10
 * H2 DataBase, Mysql
