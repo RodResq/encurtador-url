@@ -67,13 +67,13 @@ Criando uma nova url reduzida
 ```shell
 POST http://localhost:8080/encurtador-rest/api
 ```
-Nessecário passar o json no corpo da requisição ex:
+Nessecário passar o json no corpo da requisição. Exemplo:
 ```json
 { 
 	"urlOriginal": "www.google.com" 
 }
 ```
-Como retorno temos um json com a nova url reduzida criada
+Como retorno temos um json com a nova url reduzida criada:
 ```json
 {
 	"id": 1,
