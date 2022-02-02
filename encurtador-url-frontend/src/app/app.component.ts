@@ -67,15 +67,17 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   search(value) {
-    const searchUrl  = value;
-    this.result$ = this.service.buscarUrl(searchUrl);
-    this.result$
-      .pipe(tap(r => console.log(r)))
-      .subscribe(retorno => {
-        if (retorno) {
-          this.urlRetorno = retorno;
-        }
-      });
+    if (value) {
+      const searchUrl = value;
+      this.result$ = this.service.buscarUrl(searchUrl);
+      this.result$
+        .pipe(tap(r => console.log(r)))
+        .subscribe(retorno => {
+          if (retorno) {
+            this.urlRetorno = retorno;
+          }
+        });
+    }
   }
 
 
