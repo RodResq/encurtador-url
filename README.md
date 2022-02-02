@@ -62,7 +62,7 @@ ng serve --open
 http://localhost:4200/encurtador
 ```
 
-### Testando a API e os EndPoints no Postman ou Insomia:
+### Testando a API e os EndPoints no Postman ou Insomnia:
 Criando uma nova url reduzida
 ```shell
 POST http://localhost:8080/encurtador-rest/api
