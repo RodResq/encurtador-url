@@ -37,17 +37,17 @@ http://localhost:8080/encurtador
 ```
 
 ## Steps - Excutar Backend e Frontend Separados
-Step 1 - Entre na pasta do backend do projeto
+Step 1 - Entre na pasta do backend do projeto:
 ```shell
 cd encurtador-url-backend/
 ```
 
-Step 2 - Execute o seguinte comando para executar
+Step 2 - Execute o seguinte comando para executar o backend:
 ```shell
 mvn spring-boot:run
 ```
 
-Step 3 - Entre na pasta do frontend do projeto
+Step 3 - Entre na pasta do frontend do projeto:
 ```shell
 cd encurtador-url-frontend/
 ```
