@@ -53,12 +53,12 @@ cd encurtador-url-frontend/
 ```
 
 Step 4 - Execute o seguinte comnado para rodar o frontend
-```
+```shell
 ng serve --open
 ```
 
 ### Acessando o projeto
-```
+```shell
 http://localhost:4200/encurtador
 ```
 
