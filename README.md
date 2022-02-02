@@ -1,5 +1,5 @@
 # Visão geralal
-O projeto tem por objetivo testar a funcionalidade e lógicas de redução de urls.
+O projeto tem por objetivo testar as funcionalidades e lógicas para a redução de urls.
 
 ## Tecnologias
 * Java 11
