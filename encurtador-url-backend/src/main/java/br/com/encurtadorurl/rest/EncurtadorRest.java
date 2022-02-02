@@ -21,12 +21,6 @@ public class EncurtadorRest {
     @Autowired
     private UrlService urlService;
 
-    @GetMapping("/test")
-    @ResponseBody
-    public String encurtador() {
-        System.out.println("Entrou no encurtador");
-        return "www.abc.com";
-    }
 
     @PostMapping
     public ResponseEntity<Url> salvar(@RequestBody Url url) {
