@@ -93,7 +93,7 @@ Verificando se uma url já existe:
 ```shell
 GET http://localhost:8080/encurtador-rest/api/codigo/www.google.com
 ```
-Dados Retornado
+Dados Retornado:
 ```json
 {
 	"id": 1,

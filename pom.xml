@@ -16,7 +16,7 @@
 	<packaging>pom</packaging>
 
 	<name>encurtador-url</name>
-	<description>Projeto teste como Pre-requizito para obtencao da vaga de dev na ZG Solucoes</description>
+	<description>Projeto ultilizafo encurtar urls de sites Externos</description>
 
 	<modules>
 		<module>encurtador-url-frontend</module>
