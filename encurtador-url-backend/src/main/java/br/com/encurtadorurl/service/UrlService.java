@@ -14,7 +14,7 @@ import java.util.Random;
 @Service
 public class UrlService {
 
-    public static final String DOMINIO_PREFIX = "zg.com.br/";
+    public static final String DOMINIO_PREFIX = "exemplo.com.br/";
 
     @Autowired
     private UrlRepository urlRepository;
